@@ -192,38 +192,47 @@
         android:text="C" />
 
     <TextView
-        android:id="@+id/firstLevelStack"
+        android:id="@+id/editTextViev"
         android:layout_width="400dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="250dp"
         android:layout_marginStart="5dp" />
 
     <TextView
-        android:id="@+id/secondLevelStack"
+        android:id="@+id/firtsLevelStack"
         android:layout_width="400dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="189dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginStart="5dp" />
+
+    <TextView
+        android:id="@+id/secondLevelStack"
+        android:layout_width="400dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="150dp"
         android:layout_marginStart="5dp" />
 
     <TextView
         android:id="@+id/thirdLevelStack"
         android:layout_width="400dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="129dp"
+        android:layout_marginTop="100dp"
         android:layout_marginStart="5dp" />
 
     <TextView
         android:id="@+id/forthLevelStack"
         android:layout_width="400dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="50dp"
         android:layout_marginStart="5dp" />
 </RelativeLayout>
