@@ -1,13 +1,13 @@
 package com.example.patry.kalkulator_rpn_dla_androida
 
-import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
+import java.io.Serializable
 import java.lang.Math.pow
 import java.lang.Math.sqrt
 import java.util.*
-import java.util.function.DoubleBinaryOperator
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,11 +17,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        editTextViev.text = "0"
-        firtsLevelStack.text = "0"
-        secondLevelStack.text = "0"
-        thirdLevelStack.text = "0"
-        forthLevelStack.text = "0"
+        if(savedInstanceState != null) {
+            editTextViev.text = savedInstanceState.getString("editTextViev")
+            firtsLevelStack.text = savedInstanceState.getString("firtsLevelStack")
+            secondLevelStack.text = savedInstanceState.getString("secondLevelStack")
+            thirdLevelStack.text = savedInstanceState.getString("thirdLevelStack")
+            fourthLevelStack.text = savedInstanceState.getString("fourthLevelStack")
+            stack = intent.extras.get("stack") as LinkedList<String>
+        }
+        else {
+            editTextViev.text = "0"
+            firtsLevelStack.text = "0"
+            secondLevelStack.text = "0"
+            thirdLevelStack.text = "0"
+            fourthLevelStack.text = "0"
+        }
 
         oneButton.setOnClickListener {
             if (editTextViev.text == "0"){
@@ -120,8 +130,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         enterButton.setOnClickListener {
-            stack.push(forthLevelStack.text.toString())
-            forthLevelStack.text = thirdLevelStack.text
+            stack.push(fourthLevelStack.text.toString())
+            fourthLevelStack.text = thirdLevelStack.text
             thirdLevelStack.text = secondLevelStack.text
             secondLevelStack.text = firtsLevelStack.text
             firtsLevelStack.text = editTextViev.text
@@ -141,12 +151,12 @@ class MainActivity : AppCompatActivity() {
                 firtsLevelStack.text = (firstValue + secondValue).toString()
             }
             secondLevelStack.text = thirdLevelStack.text
-            thirdLevelStack.text = forthLevelStack.text
+            thirdLevelStack.text = fourthLevelStack.text
             if (stack.isEmpty()) {
-                forthLevelStack.text = "0"
+                fourthLevelStack.text = "0"
             }
             else {
-                forthLevelStack.text = stack.pop()
+                fourthLevelStack.text = stack.pop()
             }
         }
 
@@ -163,12 +173,12 @@ class MainActivity : AppCompatActivity() {
                 firtsLevelStack.text = (secondValue - firstValue).toString()
             }
             secondLevelStack.text = thirdLevelStack.text
-            thirdLevelStack.text = forthLevelStack.text
+            thirdLevelStack.text = fourthLevelStack.text
             if (stack.isEmpty()) {
-                forthLevelStack.text = "0"
+                fourthLevelStack.text = "0"
             }
             else {
-                forthLevelStack.text = stack.pop()
+                fourthLevelStack.text = stack.pop()
             }
         }
 
@@ -185,12 +195,12 @@ class MainActivity : AppCompatActivity() {
                 firtsLevelStack.text = (firstValue * secondValue).toString()
             }
             secondLevelStack.text = thirdLevelStack.text
-            thirdLevelStack.text = forthLevelStack.text
+            thirdLevelStack.text = fourthLevelStack.text
             if (stack.isEmpty()) {
-                forthLevelStack.text = "0"
+                fourthLevelStack.text = "0"
             }
             else {
-                forthLevelStack.text = stack.pop()
+                fourthLevelStack.text = stack.pop()
             }
         }
 
@@ -207,12 +217,12 @@ class MainActivity : AppCompatActivity() {
                 firtsLevelStack.text = (secondValue / firstValue).toString()
             }
             secondLevelStack.text = thirdLevelStack.text
-            thirdLevelStack.text = forthLevelStack.text
+            thirdLevelStack.text = fourthLevelStack.text
             if (stack.isEmpty()) {
-                forthLevelStack.text = "0"
+                fourthLevelStack.text = "0"
             }
             else {
-                forthLevelStack.text = stack.pop()
+                fourthLevelStack.text = stack.pop()
             }
         }
 
@@ -235,12 +245,12 @@ class MainActivity : AppCompatActivity() {
                 firtsLevelStack.text = pow(secondValue, firstValue).toInt().toString()
             }
             secondLevelStack.text = thirdLevelStack.text
-            thirdLevelStack.text = forthLevelStack.text
+            thirdLevelStack.text = fourthLevelStack.text
             if (stack.isEmpty()) {
-                forthLevelStack.text = "0"
+                fourthLevelStack.text = "0"
             }
             else {
-                forthLevelStack.text = stack.pop()
+                fourthLevelStack.text = stack.pop()
             }
         }
 
@@ -259,12 +269,12 @@ class MainActivity : AppCompatActivity() {
             editTextViev.text = firtsLevelStack.text
             firtsLevelStack.text = secondLevelStack.text
             secondLevelStack.text = thirdLevelStack.text
-            thirdLevelStack.text = forthLevelStack.text
+            thirdLevelStack.text = fourthLevelStack.text
             if (stack.isEmpty()) {
-                forthLevelStack.text = "0"
+                fourthLevelStack.text = "0"
             }
             else {
-                forthLevelStack.text = stack.pop()
+                fourthLevelStack.text = stack.pop()
             }
         }
 
@@ -273,12 +283,22 @@ class MainActivity : AppCompatActivity() {
             firtsLevelStack.text = "0"
             secondLevelStack.text = "0"
             thirdLevelStack.text = "0"
-            forthLevelStack.text = "0"
+            fourthLevelStack.text = "0"
             stack = LinkedList<String>()
         }
 
         clearButton.setOnClickListener {
             editTextViev.text = "0"
         }
+    }
+
+    override fun onSaveInstanceState(outBundle: Bundle) {
+        super.onSaveInstanceState(outBundle)
+        outBundle.putString("editTextViev", editTextViev.text.toString())
+        outBundle.putString("firtsLevelStack", firtsLevelStack.text.toString())
+        outBundle.putString("secondLevelStack", secondLevelStack.text.toString())
+        outBundle.putString("thirdLevelStack", thirdLevelStack.text.toString())
+        outBundle.putString("fourthLevelStack", fourthLevelStack.text.toString())
+        intent.putExtra("stack", stack as Serializable)
     }
 }

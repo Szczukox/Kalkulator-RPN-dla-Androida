@@ -9,7 +9,7 @@
     <Button
         android:id="@+id/oneButton"
         android:layout_width="85dp"
-        android:layout_height="45dp"
+        android:layout_height="55dp"
         android:layout_above="@+id/zeroButton"
         android:layout_alignStart="@+id/zeroButton"
         android:text="1" />
@@ -17,7 +17,7 @@
     <Button
         android:id="@+id/twoButton"
         android:layout_width="85dp"
-        android:layout_height="45dp"
+        android:layout_height="55dp"
         android:layout_alignTop="@+id/oneButton"
         android:layout_toStartOf="@+id/threeButton"
         android:text="2" />
@@ -25,7 +25,7 @@
     <Button
         android:id="@+id/threeButton"
         android:layout_width="85dp"
-        android:layout_height="45dp"
+        android:layout_height="55dp"
         android:layout_alignTop="@+id/oneButton"
         android:layout_toEndOf="@+id/comaButton"
         android:text="3" />
@@ -33,7 +33,7 @@
     <Button
         android:id="@+id/fourButton"
         android:layout_width="85dp"
-        android:layout_height="45dp"
+        android:layout_height="55dp"
         android:layout_above="@+id/oneButton"
         android:layout_alignStart="@+id/oneButton"
         android:text="4" />
@@ -41,7 +41,7 @@
     <Button
         android:id="@+id/fiveButton"
         android:layout_width="85dp"
-        android:layout_height="45dp"
+        android:layout_height="55dp"
         android:layout_above="@+id/oneButton"
         android:layout_toEndOf="@+id/oneButton"
         android:text="5" />
@@ -49,7 +49,7 @@
     <Button
         android:id="@+id/sixButton"
         android:layout_width="85dp"
-        android:layout_height="45dp"
+        android:layout_height="55dp"
         android:layout_above="@+id/oneButton"
         android:layout_toEndOf="@+id/twoButton"
         android:text="6" />
@@ -57,7 +57,7 @@
     <Button
         android:id="@+id/sevenButton"
         android:layout_width="85dp"
-        android:layout_height="45dp"
+        android:layout_height="55dp"
         android:layout_above="@+id/fourButton"
         android:layout_alignStart="@+id/oneButton"
         android:text="7" />
@@ -65,7 +65,7 @@
     <Button
         android:id="@+id/eightButton"
         android:layout_width="85dp"
-        android:layout_height="45dp"
+        android:layout_height="55dp"
         android:layout_above="@+id/fourButton"
         android:layout_toEndOf="@+id/oneButton"
         android:text="8" />
@@ -73,7 +73,7 @@
     <Button
         android:id="@+id/nineButton"
         android:layout_width="85dp"
-        android:layout_height="45dp"
+        android:layout_height="55dp"
         android:layout_above="@+id/fourButton"
         android:layout_toEndOf="@+id/twoButton"
         android:text="9" />
@@ -81,7 +81,7 @@
     <Button
         android:id="@+id/zeroButton"
         android:layout_width="85dp"
-        android:layout_height="45dp"
+        android:layout_height="55dp"
         android:layout_alignParentBottom="true"
         android:layout_toStartOf="@+id/comaButton"
         android:text="0" />
@@ -89,7 +89,7 @@
     <Button
         android:id="@+id/comaButton"
         android:layout_width="85dp"
-        android:layout_height="45dp"
+        android:layout_height="55dp"
         android:layout_alignParentBottom="true"
         android:layout_toStartOf="@+id/enterButton"
         android:text="." />
@@ -97,7 +97,7 @@
     <Button
         android:id="@+id/enterButton"
         android:layout_width="170dp"
-        android:layout_height="45dp"
+        android:layout_height="55dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:text="ENTER" />
@@ -105,7 +105,7 @@
     <Button
         android:id="@+id/addButton"
         android:layout_width="85dp"
-        android:layout_height="45dp"
+        android:layout_height="55dp"
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/oneButton"
         android:text="+" />
@@ -113,7 +113,7 @@
     <Button
         android:id="@+id/diffButton"
         android:layout_width="85dp"
-        android:layout_height="45dp"
+        android:layout_height="55dp"
         android:layout_above="@+id/oneButton"
         android:layout_toEndOf="@+id/threeButton"
         android:text="-" />
@@ -121,7 +121,7 @@
     <Button
         android:id="@+id/mulButton"
         android:layout_width="85dp"
-        android:layout_height="45dp"
+        android:layout_height="55dp"
         android:layout_above="@+id/fourButton"
         android:layout_toEndOf="@+id/threeButton"
         android:text="X" />
@@ -129,7 +129,7 @@
     <Button
         android:id="@+id/divButton"
         android:layout_width="85dp"
-        android:layout_height="45dp"
+        android:layout_height="55dp"
         android:layout_above="@+id/sevenButton"
         android:layout_toEndOf="@+id/threeButton"
         android:text="÷" />
@@ -137,7 +137,7 @@
     <Button
         android:id="@+id/changeSignButton"
         android:layout_width="85dp"
-        android:layout_height="45dp"
+        android:layout_height="55dp"
         android:layout_above="@+id/sevenButton"
         android:layout_toEndOf="@+id/twoButton"
         android:text="+/-" />
@@ -145,7 +145,7 @@
     <Button
         android:id="@+id/powerButton"
         android:layout_width="85dp"
-        android:layout_height="45dp"
+        android:layout_height="55dp"
         android:layout_above="@+id/sevenButton"
         android:layout_toEndOf="@+id/oneButton"
         android:text="POWER" />
@@ -153,7 +153,7 @@
     <Button
         android:id="@+id/sqrtButton"
         android:layout_width="85dp"
-        android:layout_height="45dp"
+        android:layout_height="55dp"
         android:layout_above="@+id/sevenButton"
         android:layout_alignStart="@+id/oneButton"
         android:text="SQRT" />
@@ -161,7 +161,7 @@
     <Button
         android:id="@+id/swapButton"
         android:layout_width="85dp"
-        android:layout_height="45dp"
+        android:layout_height="55dp"
         android:layout_above="@+id/divButton"
         android:layout_alignParentEnd="true"
         android:text="SWAP" />
@@ -169,7 +169,7 @@
     <Button
         android:id="@+id/dropButton"
         android:layout_width="85dp"
-        android:layout_height="45dp"
+        android:layout_height="55dp"
         android:layout_above="@+id/divButton"
         android:layout_toEndOf="@+id/twoButton"
         android:text="DROP" />
@@ -177,7 +177,7 @@
     <Button
         android:id="@+id/allClearButton"
         android:layout_width="85dp"
-        android:layout_height="45dp"
+        android:layout_height="55dp"
         android:layout_above="@+id/divButton"
         android:layout_toEndOf="@+id/oneButton"
         android:text="AC" />
@@ -185,7 +185,7 @@
     <Button
         android:id="@+id/clearButton"
         android:layout_width="85dp"
-        android:layout_height="45dp"
+        android:layout_height="55dp"
         android:layout_above="@+id/divButton"
         android:layout_alignStart="@+id/oneButton"
         android:text="C" />
@@ -193,7 +193,7 @@
     <TextView
         android:id="@+id/editTextViev"
         android:layout_width="330dp"
-        android:layout_height="45dp"
+        android:layout_height="40dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="250dp"
@@ -227,7 +227,7 @@
         android:layout_marginStart="5dp" />
 
     <TextView
-        android:id="@+id/forthLevelStack"
+        android:id="@+id/fourthLevelStack"
         android:layout_width="330dp"
         android:layout_height="40dp"
         android:layout_alignParentStart="true"
