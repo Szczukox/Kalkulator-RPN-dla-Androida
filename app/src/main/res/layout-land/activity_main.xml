@@ -234,4 +234,12 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="50dp"
         android:layout_marginStart="5dp" />
+
+    <Button
+        android:id="@+id/settingsButton"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="SETTINGS" />
 </RelativeLayout>

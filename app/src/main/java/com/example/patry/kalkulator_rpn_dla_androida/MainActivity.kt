@@ -1,5 +1,7 @@
 package com.example.patry.kalkulator_rpn_dla_androida
 
+import android.app.Activity
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
@@ -17,9 +19,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+
         if(savedInstanceState != null) {
-            editTextViev.text = savedInstanceState.getString("editTextViev")
-            firtsLevelStack.text = savedInstanceState.getString("firtsLevelStack")
+            editTextViev.text = savedInstanceState.getString("editTextView")
+            firtsLevelStack.text = savedInstanceState.getString("firstLevelStack")
             secondLevelStack.text = savedInstanceState.getString("secondLevelStack")
             thirdLevelStack.text = savedInstanceState.getString("thirdLevelStack")
             fourthLevelStack.text = savedInstanceState.getString("fourthLevelStack")
@@ -290,15 +294,35 @@ class MainActivity : AppCompatActivity() {
         clearButton.setOnClickListener {
             editTextViev.text = "0"
         }
+
+        settingsButton.setOnClickListener {
+            val intent = Intent(this, SettingActivity::class.java)
+            intent.putExtra("editTextView", editTextViev.text.toString())
+            intent.putExtra("firstStackLevel", firtsLevelStack.text.toString())
+            intent.putExtra("secondStackLevel", secondLevelStack.text.toString())
+            intent.putExtra("thirdStackLevel", thirdLevelStack.text.toString())
+            intent.putExtra("fourthStackLevel", fourthLevelStack.text.toString())
+            intent.putExtra("stack", stack as Serializable)
+            startActivityForResult(intent, 1)
+        }
     }
 
     override fun onSaveInstanceState(outBundle: Bundle) {
         super.onSaveInstanceState(outBundle)
-        outBundle.putString("editTextViev", editTextViev.text.toString())
-        outBundle.putString("firtsLevelStack", firtsLevelStack.text.toString())
+        outBundle.putString("editTextView", editTextViev.text.toString())
+        outBundle.putString("firstLevelStack", firtsLevelStack.text.toString())
         outBundle.putString("secondLevelStack", secondLevelStack.text.toString())
         outBundle.putString("thirdLevelStack", thirdLevelStack.text.toString())
         outBundle.putString("fourthLevelStack", fourthLevelStack.text.toString())
         intent.putExtra("stack", stack as Serializable)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1) {
+            if (resultCode == Activity.RESULT_OK) {
+
+            }
+        }
     }
 }
