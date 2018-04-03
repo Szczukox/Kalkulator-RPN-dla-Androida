@@ -2,6 +2,7 @@ package com.example.patry.kalkulator_rpn_dla_androida
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
@@ -16,6 +17,9 @@ class MainActivity : AppCompatActivity() {
 
     var stack : LinkedList<String> = LinkedList<String>()
     var precision : Int = 2
+    var red : Int = 255
+    var green : Int = 255
+    var blue : Int = 255
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,6 +33,10 @@ class MainActivity : AppCompatActivity() {
             fourthLevelStack.text = savedInstanceState.getString("fourthLevelStack")
             stack = intent.extras.get("stack") as LinkedList<String>
             precision = intent.getIntExtra("precision", 2)
+            red = intent.getIntExtra("red", 255)
+            green = intent.getIntExtra("green", 255)
+            blue = intent.getIntExtra("blue", 255)
+            relativeLayout.setBackgroundColor(Color.rgb(red, green, blue))
         }
         else {
             editTextViev.text = "0"
@@ -188,7 +196,12 @@ class MainActivity : AppCompatActivity() {
         divButton.setOnClickListener {
             val firstValue : Double = firtsLevelStack.text.toString().toDouble()
             val secondValue : Double = secondLevelStack.text.toString().toDouble()
-            firtsLevelStack.text = (round(secondValue / firstValue * pow(10.toDouble(), precision.toDouble())) / pow(10.toDouble(), precision.toDouble())).toString()
+            if (firstValue.toInt() != 0) {
+                firtsLevelStack.text = (round(secondValue / firstValue * pow(10.toDouble(), precision.toDouble())) / pow(10.toDouble(), precision.toDouble())).toString()
+            }
+            else {
+                firtsLevelStack.text = "0"
+            }
             secondLevelStack.text = thirdLevelStack.text
             thirdLevelStack.text = fourthLevelStack.text
             if (stack.isEmpty()) {
@@ -234,7 +247,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         dropButton.setOnClickListener {
-            editTextViev.text = firtsLevelStack.text
             firtsLevelStack.text = secondLevelStack.text
             secondLevelStack.text = thirdLevelStack.text
             thirdLevelStack.text = fourthLevelStack.text
@@ -267,6 +279,10 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("thirdStackLevel", thirdLevelStack.text.toString())
             intent.putExtra("fourthStackLevel", fourthLevelStack.text.toString())
             intent.putExtra("stack", stack as Serializable)
+            intent.putExtra("precision", precision)
+            intent.putExtra("red", red)
+            intent.putExtra("green", green)
+            intent.putExtra("blue", blue)
             startActivityForResult(intent, 1)
         }
     }
@@ -280,6 +296,9 @@ class MainActivity : AppCompatActivity() {
         outBundle.putString("fourthLevelStack", fourthLevelStack.text.toString())
         intent.putExtra("stack", stack as Serializable)
         intent.putExtra("precision", precision)
+        intent.putExtra("red", red)
+        intent.putExtra("green", green)
+        intent.putExtra("blue", blue)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -288,6 +307,10 @@ class MainActivity : AppCompatActivity() {
             if (resultCode == Activity.RESULT_OK) {
                 if (data != null) {
                     precision = data.getIntExtra("precision", 2)
+                    red = data.getIntExtra("red", 255)
+                    green = data.getIntExtra("green", 255)
+                    blue = data.getIntExtra("blue", 255)
+                    relativeLayout.setBackgroundColor(Color.rgb(red, green, blue))
                 }
             }
         }
