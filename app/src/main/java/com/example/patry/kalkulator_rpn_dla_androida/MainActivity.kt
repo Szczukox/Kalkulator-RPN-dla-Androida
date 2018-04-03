@@ -9,17 +9,17 @@ import java.io.Serializable
 import java.lang.Math.pow
 import java.lang.Math.sqrt
 import java.util.*
+import kotlin.math.round
 
 
 class MainActivity : AppCompatActivity() {
 
     var stack : LinkedList<String> = LinkedList<String>()
+    var precision : Int = 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
 
         if(savedInstanceState != null) {
             editTextViev.text = savedInstanceState.getString("editTextView")
@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
             thirdLevelStack.text = savedInstanceState.getString("thirdLevelStack")
             fourthLevelStack.text = savedInstanceState.getString("fourthLevelStack")
             stack = intent.extras.get("stack") as LinkedList<String>
+            precision = intent.getIntExtra("precision", 2)
         }
         else {
             editTextViev.text = "0"
@@ -143,17 +144,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         addButton.setOnClickListener {
-            if (firtsLevelStack.text.contains(".") or secondLevelStack.text.contains(".")) {
-                val firstValue : Double = firtsLevelStack.text.toString().toDouble()
-                val secondValue : Double = secondLevelStack.text.toString().toDouble()
-                firtsLevelStack.text = (firstValue + secondValue).toString()
-
-            }
-            else {
-                val firstValue : Int = firtsLevelStack.text.toString().toInt()
-                val secondValue : Int = secondLevelStack.text.toString().toInt()
-                firtsLevelStack.text = (firstValue + secondValue).toString()
-            }
+            val firstValue : Double = firtsLevelStack.text.toString().toDouble()
+            val secondValue : Double = secondLevelStack.text.toString().toDouble()
+            firtsLevelStack.text = (round((firstValue + secondValue) * pow(10.toDouble(), precision.toDouble())) / pow(10.toDouble(), precision.toDouble())).toString()
             secondLevelStack.text = thirdLevelStack.text
             thirdLevelStack.text = fourthLevelStack.text
             if (stack.isEmpty()) {
@@ -165,17 +158,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         diffButton.setOnClickListener {
-            if (firtsLevelStack.text.contains(".") or secondLevelStack.text.contains(".")) {
-                val firstValue : Double = firtsLevelStack.text.toString().toDouble()
-                val secondValue : Double = secondLevelStack.text.toString().toDouble()
-                firtsLevelStack.text = (secondValue - firstValue).toString()
-
-            }
-            else {
-                val firstValue : Int = firtsLevelStack.text.toString().toInt()
-                val secondValue : Int = secondLevelStack.text.toString().toInt()
-                firtsLevelStack.text = (secondValue - firstValue).toString()
-            }
+            val firstValue : Double = firtsLevelStack.text.toString().toDouble()
+            val secondValue : Double = secondLevelStack.text.toString().toDouble()
+            firtsLevelStack.text = (round((secondValue - firstValue) * pow(10.toDouble(), precision.toDouble())) / pow(10.toDouble(), precision.toDouble())).toString()
             secondLevelStack.text = thirdLevelStack.text
             thirdLevelStack.text = fourthLevelStack.text
             if (stack.isEmpty()) {
@@ -187,17 +172,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         mulButton.setOnClickListener {
-            if (firtsLevelStack.text.contains(".") or secondLevelStack.text.contains(".")) {
-                val firstValue : Double = firtsLevelStack.text.toString().toDouble()
-                val secondValue : Double = secondLevelStack.text.toString().toDouble()
-                firtsLevelStack.text = (firstValue * secondValue).toString()
-
-            }
-            else {
-                val firstValue : Int = firtsLevelStack.text.toString().toInt()
-                val secondValue : Int = secondLevelStack.text.toString().toInt()
-                firtsLevelStack.text = (firstValue * secondValue).toString()
-            }
+            val firstValue : Double = firtsLevelStack.text.toString().toDouble()
+            val secondValue : Double = secondLevelStack.text.toString().toDouble()
+            firtsLevelStack.text = (round(firstValue * secondValue * pow(10.toDouble(), precision.toDouble())) / pow(10.toDouble(), precision.toDouble())).toString()
             secondLevelStack.text = thirdLevelStack.text
             thirdLevelStack.text = fourthLevelStack.text
             if (stack.isEmpty()) {
@@ -209,17 +186,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         divButton.setOnClickListener {
-            if (firtsLevelStack.text.contains(".") or secondLevelStack.text.contains(".")) {
-                val firstValue : Double = firtsLevelStack.text.toString().toDouble()
-                val secondValue : Double = secondLevelStack.text.toString().toDouble()
-                firtsLevelStack.text = (secondValue / firstValue).toString()
-
-            }
-            else {
-                val firstValue : Int = firtsLevelStack.text.toString().toInt()
-                val secondValue : Int = secondLevelStack.text.toString().toInt()
-                firtsLevelStack.text = (secondValue / firstValue).toString()
-            }
+            val firstValue : Double = firtsLevelStack.text.toString().toDouble()
+            val secondValue : Double = secondLevelStack.text.toString().toDouble()
+            firtsLevelStack.text = (round(secondValue / firstValue * pow(10.toDouble(), precision.toDouble())) / pow(10.toDouble(), precision.toDouble())).toString()
             secondLevelStack.text = thirdLevelStack.text
             thirdLevelStack.text = fourthLevelStack.text
             if (stack.isEmpty()) {
@@ -242,12 +211,7 @@ class MainActivity : AppCompatActivity() {
         powerButton.setOnClickListener {
             val firstValue : Double = firtsLevelStack.text.toString().toDouble()
             val secondValue : Double = secondLevelStack.text.toString().toDouble()
-            if (firtsLevelStack.text.contains(".") or secondLevelStack.text.contains(".")) {
-                firtsLevelStack.text = pow(secondValue, firstValue).toString()
-            }
-            else {
-                firtsLevelStack.text = pow(secondValue, firstValue).toInt().toString()
-            }
+            firtsLevelStack.text = (round(pow(secondValue, firstValue) * pow(10.toDouble(), precision.toDouble())) / pow(10.toDouble(), precision.toDouble())).toString()
             secondLevelStack.text = thirdLevelStack.text
             thirdLevelStack.text = fourthLevelStack.text
             if (stack.isEmpty()) {
@@ -260,7 +224,7 @@ class MainActivity : AppCompatActivity() {
 
         sqrtButton.setOnClickListener {
             val firstValue : Double = firtsLevelStack.text.toString().toDouble()
-            firtsLevelStack.text = sqrt(firstValue).toString()
+            firtsLevelStack.text = (round(sqrt(firstValue) * pow(10.toDouble(), precision.toDouble())) / pow(10.toDouble(), precision.toDouble())).toString()
         }
 
         swapButton.setOnClickListener {
@@ -315,13 +279,16 @@ class MainActivity : AppCompatActivity() {
         outBundle.putString("thirdLevelStack", thirdLevelStack.text.toString())
         outBundle.putString("fourthLevelStack", fourthLevelStack.text.toString())
         intent.putExtra("stack", stack as Serializable)
+        intent.putExtra("precision", precision)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 1) {
             if (resultCode == Activity.RESULT_OK) {
-
+                if (data != null) {
+                    precision = data.getIntExtra("precision", 2)
+                }
             }
         }
     }

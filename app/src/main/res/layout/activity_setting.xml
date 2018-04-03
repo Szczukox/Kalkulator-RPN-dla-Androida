@@ -14,4 +14,30 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="12dp"
         android:text="BACK" />
+
+    <EditText
+        android:id="@+id/precisionEditText"
+        android:layout_width="25dp"
+        android:layout_height="50dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="128dp"
+        android:layout_marginTop="158dp"
+        android:ems="10"
+        android:inputType="number"
+        android:selectAllOnFocus="false"
+        android:singleLine="false"
+        android:text="2" />
+
+    <TextView
+        android:id="@+id/precisionTextView"
+        android:layout_width="111dp"
+        android:layout_height="50dp"
+        android:layout_alignBaseline="@+id/precisionEditText"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="118dp"
+        android:text="Precision"
+        android:textAlignment="center"
+        android:textSize="24dp" />
+
 </RelativeLayout>

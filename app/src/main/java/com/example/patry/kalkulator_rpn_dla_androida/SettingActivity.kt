@@ -4,15 +4,17 @@ import android.app.Activity
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
 import kotlinx.android.synthetic.main.activity_setting.*
 import java.util.*
+import kotlin.collections.ArrayList
 
 class SettingActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting)
-
 
         backButton.setOnClickListener {
             val edit : String = intent.getStringExtra("editTextView")
@@ -29,7 +31,8 @@ class SettingActivity : AppCompatActivity() {
             backIntent.putExtra("thirdStackLevel", third)
             backIntent.putExtra("fourthStackLevel", fourth)
             //backIntent.putExtra("stack", stack as Serializable)
-            setResult(Activity.RESULT_OK, intent)
+            backIntent.putExtra("precision", precisionEditText.text.toString().toInt())
+            setResult(Activity.RESULT_OK, backIntent)
             finish()
         }
     }
