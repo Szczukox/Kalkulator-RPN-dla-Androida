@@ -15,6 +15,7 @@ import kotlin.math.round
 
 class MainActivity : AppCompatActivity() {
 
+    var lastValue : String = "0"
     var stack : LinkedList<String> = LinkedList<String>()
     var precision : Int = 2
     var red : Int = 255
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity() {
             secondLevelStack.text = savedInstanceState.getString("secondLevelStack")
             thirdLevelStack.text = savedInstanceState.getString("thirdLevelStack")
             fourthLevelStack.text = savedInstanceState.getString("fourthLevelStack")
+            lastValue = intent.getStringExtra("lastValue")
             stack = intent.extras.get("stack") as LinkedList<String>
             precision = intent.getIntExtra("precision", 2)
             red = intent.getIntExtra("red", 255)
@@ -39,7 +41,6 @@ class MainActivity : AppCompatActivity() {
             relativeLayout.setBackgroundColor(Color.rgb(red, green, blue))
         }
         else {
-            editTextViev.text = "0"
             firtsLevelStack.text = "0"
             secondLevelStack.text = "0"
             thirdLevelStack.text = "0"
@@ -147,8 +148,14 @@ class MainActivity : AppCompatActivity() {
             fourthLevelStack.text = thirdLevelStack.text
             thirdLevelStack.text = secondLevelStack.text
             secondLevelStack.text = firtsLevelStack.text
-            firtsLevelStack.text = editTextViev.text
-            editTextViev.text = "0"
+            if (editTextViev.text != "") {
+                firtsLevelStack.text = editTextViev.text
+                lastValue = editTextViev.text.toString()
+            }
+            else {
+                firtsLevelStack.text = lastValue
+            }
+            editTextViev.text = ""
         }
 
         addButton.setOnClickListener {
@@ -278,6 +285,7 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("secondStackLevel", secondLevelStack.text.toString())
             intent.putExtra("thirdStackLevel", thirdLevelStack.text.toString())
             intent.putExtra("fourthStackLevel", fourthLevelStack.text.toString())
+            intent.putExtra("lastValue", lastValue)
             intent.putExtra("stack", stack as Serializable)
             intent.putExtra("precision", precision)
             intent.putExtra("red", red)
@@ -294,6 +302,7 @@ class MainActivity : AppCompatActivity() {
         outBundle.putString("secondLevelStack", secondLevelStack.text.toString())
         outBundle.putString("thirdLevelStack", thirdLevelStack.text.toString())
         outBundle.putString("fourthLevelStack", fourthLevelStack.text.toString())
+        intent.putExtra("lastValue", lastValue)
         intent.putExtra("stack", stack as Serializable)
         intent.putExtra("precision", precision)
         intent.putExtra("red", red)

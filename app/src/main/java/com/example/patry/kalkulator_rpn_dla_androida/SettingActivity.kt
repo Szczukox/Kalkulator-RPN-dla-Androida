@@ -4,14 +4,8 @@ import android.app.Activity
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
-import android.view.View
-import android.widget.AdapterView
 import android.widget.SeekBar
 import kotlinx.android.synthetic.main.activity_setting.*
-import java.util.*
-import kotlin.collections.ArrayList
-
 
 
 class SettingActivity : AppCompatActivity() {
@@ -29,7 +23,7 @@ class SettingActivity : AppCompatActivity() {
         val green : Int = intent.getIntExtra("green", 255)
         val blue : Int = intent.getIntExtra("blue", 255)
 
-        //precisionEditText.setText(precision)
+        precisionEditText.setText(precision.toString())
         redTextView.text = red.toString()
         greenTextView.text = green.toString()
         blueTextView.text = blue.toString()
@@ -43,7 +37,9 @@ class SettingActivity : AppCompatActivity() {
             val second : String = intent.getStringExtra("secondStackLevel")
             val third : String = intent.getStringExtra("thirdStackLevel")
             val fourth : String = intent.getStringExtra("fourthStackLevel")
-            //val stack : LinkedList<String> = intent.extras.get("stack") as LinkedList<String>
+            val lastValue : String = intent.getStringExtra("lastValue")
+            //var stack : LinkedList<String> = LinkedList<String>()
+            //stack = intent.extras.get("stack") as LinkedList<String>
 
             val backIntent = Intent(this, MainActivity::class.java)
             backIntent.putExtra("editTextView", edit)
@@ -51,6 +47,7 @@ class SettingActivity : AppCompatActivity() {
             backIntent.putExtra("secondStackLevel", second)
             backIntent.putExtra("thirdStackLevel", third)
             backIntent.putExtra("fourthStackLevel", fourth)
+            backIntent.putExtra("lastValue", lastValue)
             //backIntent.putExtra("stack", stack as Serializable)
             backIntent.putExtra("precision", precisionEditText.text.toString().toInt())
             backIntent.putExtra("red", redTextView.text.toString().toInt())
